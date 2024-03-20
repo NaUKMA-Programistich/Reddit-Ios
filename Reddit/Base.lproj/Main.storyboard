@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pRx-bg-dTR">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Post List View Controller-->
+        <scene sceneID="kbT-uv-3C2">
+            <objects>
+                <tableViewController id="LEq-7g-oXa" customClass="PostListViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="3QE-m9-bPN">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="829"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <textField key="tableHeaderView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by title" textAlignment="natural" minimumFontSize="17" id="0mH-si-Cv2" userLabel="SearchField">
+                            <rect key="frame" x="0.0" y="0.0" width="430" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" id="cfm-AQ-kea">
+                            <rect key="frame" x="0.0" y="412" width="430" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postRowId" rowHeight="300" id="aKd-QD-RD8" customClass="PostTableViewCell" customModule="Reddit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="430" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aKd-QD-RD8" id="1G7-8b-h4B">
+                                    <rect key="frame" x="0.0" y="0.0" width="430" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69I-nF-PIe" customClass="PostView" customModule="Reddit" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="300"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="69I-nF-PIe" firstAttribute="centerY" secondItem="1G7-8b-h4B" secondAttribute="centerY" id="1tK-1g-WtX"/>
+                                        <constraint firstAttribute="trailing" secondItem="69I-nF-PIe" secondAttribute="trailing" id="3Zq-BR-p62"/>
+                                        <constraint firstAttribute="bottom" secondItem="69I-nF-PIe" secondAttribute="bottom" id="8yP-gV-4SP"/>
+                                        <constraint firstItem="69I-nF-PIe" firstAttribute="centerX" secondItem="1G7-8b-h4B" secondAttribute="centerX" id="9Zj-lA-Gim"/>
+                                        <constraint firstItem="69I-nF-PIe" firstAttribute="top" secondItem="1G7-8b-h4B" secondAttribute="top" id="OZY-dZ-0g6"/>
+                                        <constraint firstItem="69I-nF-PIe" firstAttribute="leading" secondItem="1G7-8b-h4B" secondAttribute="leading" id="le6-07-bFt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="postView" destination="69I-nF-PIe" id="fa9-93-chj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LEq-7g-oXa" id="p5d-x5-8Zt"/>
+                            <outlet property="delegate" destination="LEq-7g-oXa" id="7xW-Tw-bvp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MLx-jg-n3o"/>
+                    <connections>
+                        <outlet property="loadingView" destination="cfm-AQ-kea" id="9Ev-UH-nom"/>
+                        <outlet property="searchField" destination="0mH-si-Cv2" id="z2F-wX-qZR"/>
+                        <outlet property="tableView" destination="3QE-m9-bPN" id="22z-ok-tbO"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="PostDetailSeque" id="Io5-cb-Xvm"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="35V-bI-vCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378.1395348837209" y="593.5622317596567"/>
+        </scene>
+        <!--Post Details View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="PostDetailsViewController" id="BYZ-38-t0r" userLabel="Post Details View Controller" customClass="PostDetailsViewController" customModule="Reddit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="RootView">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="829"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nim-ff-6nD" userLabel="PostView" customClass="PostView" customModule="Reddit">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="vnC-MW-3OX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvW-7Y-u7j" userLabel="CommentsView">
+                                <rect key="frame" x="0.0" y="300" width="430" height="529"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DgD-P8-itF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="tintColor"/>
+                        <constraints>
+                            <constraint firstItem="AvW-7Y-u7j" firstAttribute="leading" secondItem="DgD-P8-itF" secondAttribute="leading" id="1fD-2M-NJf"/>
+                            <constraint firstItem="AvW-7Y-u7j" firstAttribute="top" secondItem="nim-ff-6nD" secondAttribute="bottom" id="9Gs-yZ-VTG"/>
+                            <constraint firstAttribute="bottom" secondItem="AvW-7Y-u7j" secondAttribute="bottom" id="gLh-PH-h7F"/>
+                            <constraint firstItem="nim-ff-6nD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hwd-hj-WLb"/>
+                            <constraint firstItem="nim-ff-6nD" firstAttribute="top" secondItem="DgD-P8-itF" secondAttribute="top" id="mbT-I9-8wI"/>
+                            <constraint firstItem="nim-ff-6nD" firstAttribute="leading" secondItem="DgD-P8-itF" secondAttribute="leading" id="sqT-Jp-XMx">
+                                <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="50"/>
+                            </constraint>
+                            <constraint firstItem="AvW-7Y-u7j" firstAttribute="trailing" secondItem="DgD-P8-itF" secondAttribute="trailing" id="twV-LI-nBw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="v8E-e5-Q7D" userLabel="PostDetailsView">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="p4z-kO-6Hd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentsView" destination="AvW-7Y-u7j" id="XHs-WJ-jNu"/>
+                        <outlet property="postView" destination="nim-ff-6nD" id="vYk-9C-yKZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220.9302325581396" y="593.5622317596567"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1MQ-O4-LVh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pRx-bg-dTR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="qrD-xj-qIt">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                        <color key="barTintColor" systemColor="systemYellowColor"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="AccentColor"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JwB-uI-MNv">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="LEq-7g-oXa" kind="relationship" relationship="rootViewController" id="vhZ-Zq-EOr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W1b-nm-DEH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-520.46511627906978" y="593.5622317596567"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
